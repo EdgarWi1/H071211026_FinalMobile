@@ -21,14 +21,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
-                android:text="Nonton"
+                android:text="Nontonkah"
                 android:textSize="40sp"
                 android:fontFamily="@font/pinyon_script_regular"
                 android:textColor="@color/third"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="XXV"
+                android:text="INI"
                 android:fontFamily="@font/abril_fatface_regular"
                 android:textColor="@color/third"
                 android:textSize="40sp"/>
