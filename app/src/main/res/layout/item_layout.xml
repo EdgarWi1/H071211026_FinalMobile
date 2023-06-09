@@ -16,9 +16,19 @@
         android:clipToOutline="true"/>
     <TextView
         android:id="@+id/tv_item_title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
+        android:textAlignment="center"
+        android:textStyle="bold"
         android:maxLines="1"
-        android:text="The Flash qwqwr qwrqwr qwr qrq qwr qwrqwrqrqrqwr"/>
+        android:text="blabablablbal"/>
+    <TextView
+        android:id="@+id/tv_item_year"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:maxLines="1"
+        android:text="1"/>
 </LinearLayout>

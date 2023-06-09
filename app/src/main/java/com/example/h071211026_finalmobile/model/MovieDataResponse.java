@@ -17,20 +17,21 @@ public class MovieDataResponse {
             results = new ArrayList<MovieResponse>
             ();
 
-    @SerializedName("total_results")
-    @Expose
-    private Integer totalResults;
-
     @SerializedName("total_pages")
     @Expose
     private Integer totalPages;
 
-    public Integer getPage() {
-        return page;
-    }
+    @SerializedName("total_results")
+    @Expose
+    private Integer totalResults;
+
 
     public void setPage(Integer page) {
         this.page = page;
+    }
+
+    public Integer getPage() {
+        return page;
     }
 
     public List<MovieResponse>
@@ -43,20 +44,20 @@ public class MovieDataResponse {
         this.results = results;
     }
 
-    public Integer getTotalResults() {
-        return totalResults;
-    }
-
     public void setTotalResults(Integer totalResults) {
         this.totalResults = totalResults;
     }
 
-    public Integer getTotalPages() {
-        return totalPages;
+    public Integer getTotalResults() {
+        return totalResults;
     }
 
     public void setTotalPages(Integer totalPages) {
         this.totalPages = totalPages;
+    }
+
+    public Integer getTotalPages() {
+        return totalPages;
     }
 
 }
