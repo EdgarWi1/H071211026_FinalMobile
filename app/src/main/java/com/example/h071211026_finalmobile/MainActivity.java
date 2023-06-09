@@ -27,13 +27,29 @@ public class MainActivity extends AppCompatActivity {
 
         fragmentManager = getSupportFragmentManager();
         MovieFragment movieFragment = MovieFragment.getInstance();
-        Fragment fragment =
-                fragmentManager.findFragmentByTag(MovieFragment.class.getSimpleName());
+        TvFragment tvFragment = TvFragment.getInstance();
+        FavoriteFragment favoriteFragment = FavoriteFragment.getInstance();
+        Fragment fragment = fragmentManager.findFragmentByTag(MovieFragment.class.getSimpleName());
+
         if (!(fragment instanceof MovieFragment)) {
             fragmentManager
                     .beginTransaction()
                     .add(R.id.fl_container, movieFragment,
                             MovieFragment.class.getSimpleName())
+                    .commit();
+        }
+        else if (!(fragment instanceof TvFragment)) {
+            fragmentManager
+                    .beginTransaction()
+                    .add(R.id.fl_container, tvFragment,
+                            TvFragment.class.getSimpleName())
+                    .commit();
+        }
+        else if (!(fragment instanceof FavoriteFragment)) {
+            fragmentManager
+                    .beginTransaction()
+                    .add(R.id.fl_container, favoriteFragment,
+                            FavoriteFragment.class.getSimpleName())
                     .commit();
         }
 

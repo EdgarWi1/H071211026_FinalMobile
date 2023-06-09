@@ -34,16 +34,14 @@ import retrofit2.Retrofit;
 
 public class MovieFragment extends Fragment {
     private static MovieFragment instance;
-
     private RecyclerView recyclerView;
-
     private ProgressBar progressBar;
     private LinearLayout errorNetwork;
     private GridLayoutManager gridLayoutManager;
 
     MovieAdapter movieAdapter;
 
-    static ArrayList<MovieResponse> movieResponses = new ArrayList<>();
+
 
     public MovieFragment() {
         // Required empty public constructor
@@ -84,7 +82,7 @@ public class MovieFragment extends Fragment {
 
         executorService.execute(() -> client.enqueue(new Callback<MovieDataResponse>() {
             @Override
-            public void onResponse(Call<MovieDataResponse> call, Response<MovieDataResponse> response) {
+            public void onResponse(@NonNull Call<MovieDataResponse> call, @NonNull Response<MovieDataResponse> response) {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         ArrayList<MovieResponse> movies = (ArrayList<MovieResponse>) response.body().getResults();
@@ -92,8 +90,10 @@ public class MovieFragment extends Fragment {
                         handler.post(() -> {
                             GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity().getApplicationContext(), 2);
                             recyclerView.setLayoutManager(gridLayoutManager);
+
                             MovieAdapter adapter = new MovieAdapter(movies);
                             recyclerView.setAdapter(adapter);
+
                             progressBar.setVisibility(View.GONE);
                         });
                     }
@@ -101,7 +101,7 @@ public class MovieFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<MovieDataResponse> call, Throwable t) {
+            public void onFailure(@NonNull Call<MovieDataResponse> call, Throwable t) {
                 showErrorNetwork();
             }
 
