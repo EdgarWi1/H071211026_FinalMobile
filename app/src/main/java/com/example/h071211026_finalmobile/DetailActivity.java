@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.h071211026_finalmobile.model.MovieResponse;
-import com.example.h071211026_finalmobile.model.TvResponse;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
 
@@ -24,41 +22,44 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        TvResponse tvResponse = getIntent().getParcelableExtra("tv");
-        loadFilmDetail(tvResponse);
+        tv_sinopsis = findViewById(R.id.tv_sinopsis);
+        String sinopsis = getIntent().getStringExtra("tv");
+//        loadFilmDetail(sinopsis);
+        tv_sinopsis.setText(sinopsis);
+        System.out.println(sinopsis);
 
-        back.findViewById(R.id.back)
-                .setOnClickListener(v -> {
-                    onBackPressed();
-                });
-
-        favorite.findViewById(R.id.favorite)
-                .setOnClickListener(v -> {
-                    //add to databaseee
-                });
+//        back.findViewById(R.id.back)
+//                .setOnClickListener(v -> {
+//                    onBackPressed();
+//                });
+//
+//        favorite.findViewById(R.id.favorite)
+//                .setOnClickListener(v -> {
+//                    //add to databaseee
+//                });
     }
 
-    private void loadFilmDetail(TvResponse tvResponse) {
+    private void loadFilmDetail(String tvResponse) {
 
         iv_backdropcard = findViewById(R.id.iv_backdropcard);
         iv_imageCard = findViewById(R.id.iv_imagecard);
         tv_titleDetail = findViewById(R.id.tv_titleDetail);
         tv_yearDetail = findViewById(R.id.tv_yearDetail);
         tv_rating = findViewById(R.id.tv_rating);
-        tv_sinopsis = findViewById(R.id.tv_sinopsis);
+
 
         // Update UI elements here
-        Picasso.get()
-                .load("https://image.tmdb.org/t/p/w500" + tvResponse.getBackdropPath())
-                .into(iv_backdropcard);
-        Picasso.get()
-                .load("https://image.tmdb.org/t/p/w500" + tvResponse.getPosterPath())
-                .into(iv_imageCard);
-        tv_titleDetail.setText(tvResponse.getTitle());
-        String dt = tvResponse.getReleaseDate();
-        tv_yearDetail.setText(dt);
-        tv_rating.setText(String.valueOf(tvResponse.getVoteAverage()));
-        tv_sinopsis.setText(tvResponse.getOverview());
+//        Picasso.get()
+//                .load("https://image.tmdb.org/t/p/w500" + tvResponse.getBackdropPath())
+//                .into(iv_backdropcard);
+//        Picasso.get()
+//                .load("https://image.tmdb.org/t/p/w500" + tvResponse.getPosterPath())
+//                .into(iv_imageCard);
+//        tv_titleDetail.setText(tvResponse.getTitle());
+//        String dt = tvResponse.getReleaseDate();
+//        tv_yearDetail.setText(dt);
+//        tv_rating.setText(String.valueOf(tvResponse.getVoteAverage()));
+
 
     }
 }

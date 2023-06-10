@@ -1,5 +1,6 @@
 package com.example.h071211026_finalmobile.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.h071211026_finalmobile.DetailActivity;
 import com.example.h071211026_finalmobile.R;
 import com.example.h071211026_finalmobile.model.MovieResponse;
 import com.squareup.picasso.Picasso;
@@ -40,6 +42,15 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                 .into(holder.iv_item_image);
         holder.tv_item_title.setText(movieResponseList.get(position).getTitle());
         holder.tv_item_year.setText(year.substring(0,4));
+
+        holder.itemView.setOnClickListener(v -> {
+
+            Intent intent = new Intent(v.getContext(), DetailActivity.class);
+            intent.putExtra("movie", movieResponseList.get(position).getOverview());
+            System.out.println(movieResponseList.get(position).getOverview());
+            holder.itemView.getContext().startActivity(intent);
+
+        });
 
     }
 

@@ -99,7 +99,7 @@ public class TvFragment extends Fragment {
                             recyclerView.setLayoutManager(gridLayoutManager);
 
                             TvAdapter adapter = new TvAdapter(tvs);
-                            System.out.println(tvs);
+//                            System.out.println(tvs);
                             recyclerView.setAdapter(adapter);
 
                             progressBar.setVisibility(View.GONE);
