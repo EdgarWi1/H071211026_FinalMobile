@@ -46,9 +46,8 @@ public class TvFragment extends Fragment {
     private LinearLayout errorNetwork;
     private GridLayoutManager gridLayoutManager;
 
-    MovieAdapter movieAdapter;
+//    MovieAdapter movieAdapter;
 
-    static ArrayList<TvResponse> tvResponses = new ArrayList<>();
 
     public TvFragment() {
         // Required empty public constructor
@@ -73,7 +72,7 @@ public class TvFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         progressBar = getActivity().findViewById(R.id.progressbar);
-        recyclerView = getActivity().findViewById(R.id.rv_movie);
+        recyclerView = getActivity().findViewById(R.id.rv_tv);
         getTvs();
 
     }
@@ -93,12 +92,14 @@ public class TvFragment extends Fragment {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         ArrayList<TvResponse> tvs = (ArrayList<TvResponse>) response.body().getResults();
+//                        System.out.println(tvs);
 
                         handler.post(() -> {
                             GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity().getApplicationContext(), 2);
                             recyclerView.setLayoutManager(gridLayoutManager);
 
                             TvAdapter adapter = new TvAdapter(tvs);
+                            System.out.println(tvs);
                             recyclerView.setAdapter(adapter);
 
                             progressBar.setVisibility(View.GONE);

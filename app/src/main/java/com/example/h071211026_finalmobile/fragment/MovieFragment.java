@@ -1,5 +1,6 @@
 package com.example.h071211026_finalmobile.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
+import com.example.h071211026_finalmobile.DetailActivity;
 import com.example.h071211026_finalmobile.R;
 import com.example.h071211026_finalmobile.adapter.MovieAdapter;
 import com.example.h071211026_finalmobile.model.MovieDataResponse;
@@ -39,7 +41,7 @@ public class MovieFragment extends Fragment {
     private LinearLayout errorNetwork;
     private GridLayoutManager gridLayoutManager;
 
-    MovieAdapter movieAdapter;
+//    MovieAdapter movieAdapter;
 
 
 

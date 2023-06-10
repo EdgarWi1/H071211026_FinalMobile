@@ -6,9 +6,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 
 import com.example.h071211026_finalmobile.adapter.MovieAdapter;
 import com.example.h071211026_finalmobile.fragment.FavoriteFragment;
@@ -19,11 +21,15 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
     private FragmentManager fragmentManager;
+
+    private LinearLayout filmCard;
     BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+//        setListener();
 
         fragmentManager = getSupportFragmentManager();
         MovieFragment movieFragment = MovieFragment.getInstance();
@@ -55,8 +61,6 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottomnav);
         bottomNavigationView.setOnItemSelectedListener(item -> {
-
-            Fragment selectedFragment = null;
             if (item.getItemId() == R.id.item_movie) {
                 switchFragment(MovieFragment.getInstance());
             }
@@ -78,7 +82,14 @@ public class MainActivity extends AppCompatActivity {
                     .replace(R.id.fl_container, fragment,
                             MovieFragment.class.getSimpleName())
                     .commit();
-        } else {
+        }
+        else if (fragment instanceof TvFragment) {
+            transaction
+                    .replace(R.id.fl_container, fragment,
+                            TvFragment.class.getSimpleName())
+                    .commit();
+        }
+        else if (fragment instanceof FavoriteFragment) {
             transaction
                     .replace(R.id.fl_container, fragment,
                             MovieFragment.class.getSimpleName())
@@ -97,4 +108,12 @@ public class MainActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+
+//    public void setListener() {
+//        filmCard.findViewById(R.id.filmCard)
+//                .setOnClickListener(v -> {
+//                    Intent intent = new Intent(this, DetailActivity.class);
+//                    startActivity(intent);
+//                });
+//    }
 }

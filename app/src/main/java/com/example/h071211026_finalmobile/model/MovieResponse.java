@@ -14,7 +14,7 @@ public class MovieResponse implements Serializable {
     @Expose
     private String overview;
 
-    @SerializedName("first_air_date")
+    @SerializedName("release_date")
     @Expose
     private String releaseDate;
 
@@ -22,7 +22,7 @@ public class MovieResponse implements Serializable {
     @Expose
     private String originalTitle;
 
-    @SerializedName("name")
+    @SerializedName("title")
     @Expose
     private String title;
 

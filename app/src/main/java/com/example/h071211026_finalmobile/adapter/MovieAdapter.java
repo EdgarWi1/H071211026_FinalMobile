@@ -34,9 +34,12 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull MovieAdapter.ViewHolder holder, int position) {
 
-        Picasso.get().load("https://image.tmdb.org/t/p/w500"+movieResponseList.get(position).getPosterPath()).into(holder.iv_item_image);
+        String year = movieResponseList.get(position).getReleaseDate() ;
+        Picasso.get()
+                .load("https://image.tmdb.org/t/p/w500"+movieResponseList.get(position).getPosterPath())
+                .into(holder.iv_item_image);
         holder.tv_item_title.setText(movieResponseList.get(position).getTitle());
-        holder.tv_item_year.setText(movieResponseList.get(position).getReleaseDate());
+        holder.tv_item_year.setText(year.substring(0,4));
 
     }
 
