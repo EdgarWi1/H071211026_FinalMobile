@@ -25,7 +25,7 @@
                 android:background="@color/black"/>
 
             <LinearLayout
-                android:layout_width="220dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:padding="10dp"
@@ -51,14 +51,6 @@
                     />
 
             </LinearLayout>
-
-            <ImageView
-                android:id="@+id/iv_filmType"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_gravity="bottom"
-                android:src="@color/black"
-                />
 
 
         </LinearLayout>
