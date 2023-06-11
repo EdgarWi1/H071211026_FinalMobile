@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.h071211026_finalmobile.DetailActivity;
 import com.example.h071211026_finalmobile.R;
+import com.example.h071211026_finalmobile.model.MovieResponse;
 import com.example.h071211026_finalmobile.model.TvResponse;
 import com.squareup.picasso.Picasso;
 
@@ -36,20 +37,26 @@ public class TvAdapter extends RecyclerView.Adapter<TvAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull TvAdapter.ViewHolder holder, int position) {
 
-        String year = tvResponseLists.get(position).getReleaseDate();
+        TvResponse tvResponse = tvResponseLists.get(position);
+
+        String year = tvResponse.getReleaseDate();
         Picasso.get()
-                .load("https://image.tmdb.org/t/p/w500"+tvResponseLists.get(position).getPosterPath())
+                .load("https://image.tmdb.org/t/p/w500"+tvResponse.getPosterPath())
                 .into(holder.iv_item_image);
-        holder.tv_item_title.setText(tvResponseLists.get(position).getTitle());
+        holder.tv_item_title.setText(tvResponse.getTitle());
         holder.tv_item_year.setText(year.substring(0,4));
 
         holder.itemView.setOnClickListener(v -> {
 
             Intent intent = new Intent(v.getContext(), DetailActivity.class);
-            intent.putExtra("tv", tvResponseLists.get(position).getOverview());
-            System.out.println(tvResponseLists.get(position).getOverview());
+            intent.putExtra("backdrop", tvResponse.getBackdropPath());
+            intent.putExtra("poster", tvResponse.getPosterPath());
+            intent.putExtra("title", tvResponse.getTitle());
+            intent.putExtra("year", tvResponse.getReleaseDate());
+            intent.putExtra("rating", tvResponse.getVoteAverage());
+            intent.putExtra("sinopsis", tvResponse.getOverview());
+            intent.putExtra("m_or_t", "Tv Show");
             holder.itemView.getContext().startActivity(intent);
-
         });
 
     }

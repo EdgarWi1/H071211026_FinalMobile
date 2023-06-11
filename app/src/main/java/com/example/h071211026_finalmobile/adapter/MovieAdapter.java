@@ -36,18 +36,25 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull MovieAdapter.ViewHolder holder, int position) {
 
-        String year = movieResponseList.get(position).getReleaseDate() ;
+        MovieResponse movieResponse = movieResponseList.get(position);
+
+        String year = movieResponse.getReleaseDate();
         Picasso.get()
-                .load("https://image.tmdb.org/t/p/w500"+movieResponseList.get(position).getPosterPath())
+                .load("https://image.tmdb.org/t/p/w500"+movieResponse.getPosterPath())
                 .into(holder.iv_item_image);
-        holder.tv_item_title.setText(movieResponseList.get(position).getTitle());
+        holder.tv_item_title.setText(movieResponse.getTitle());
         holder.tv_item_year.setText(year.substring(0,4));
 
         holder.itemView.setOnClickListener(v -> {
 
             Intent intent = new Intent(v.getContext(), DetailActivity.class);
-            intent.putExtra("movie", movieResponseList.get(position).getOverview());
-            System.out.println(movieResponseList.get(position).getOverview());
+            intent.putExtra("backdrop", movieResponse.getBackdropPath());
+            intent.putExtra("poster", movieResponse.getPosterPath());
+            intent.putExtra("title", movieResponse.getTitle());
+            intent.putExtra("year", movieResponse.getReleaseDate());
+            intent.putExtra("rating", movieResponse.getVoteAverage());
+            intent.putExtra("sinopsis", movieResponse.getOverview());
+            intent.putExtra("m_or_t", "Movie");
             holder.itemView.getContext().startActivity(intent);
 
         });
